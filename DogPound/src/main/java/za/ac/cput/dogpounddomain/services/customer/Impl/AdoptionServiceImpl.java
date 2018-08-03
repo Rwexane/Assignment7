@@ -13,38 +13,37 @@ import java.util.List;
 public class AdoptionServiceImpl implements AdoptionService {
 
     @Autowired
-    private AdoptionRepository repository;
+    AdoptionRepository repository;
 
     @Override
-    public Adoption findById(Long id) {
-        return (Adoption) repository.findAll();
+    public Adoption create(Adoption entity) {
+        return repository.save(entity);
     }
 
     @Override
-    public Adoption save(Adoption entity) {
-        return repository.save(entity);
+    public Adoption readById(Long id) {
+        return repository.findOne(id);
+    }
+
+    @Override
+    public List<Adoption> readAll(){
+
+        List<Adoption>  adoptionList = new ArrayList<Adoption>();
+        Iterable<Adoption>adoptions = repository.findAll();
+        for(Adoption adoption : adoptions) {
+            adoptionList.add(adoption);
+        }
+        return adoptionList;
     }
 
     @Override
     public Adoption update(Adoption entity) {
         return repository.save(entity);
-
     }
 
     @Override
     public void delete(Adoption entity) {
         repository.delete(entity);
+
     }
-
-    @Override
-    public List<Adoption> findAll() {
-        List<Adoption> adoptions = new ArrayList<Adoption>();
-        Iterable<Adoption> values = repository.findAll();
-
-        for(Adoption value: values ){
-            adoptions.add(value);
-        }
-        return adoptions;
-    }
-
 }

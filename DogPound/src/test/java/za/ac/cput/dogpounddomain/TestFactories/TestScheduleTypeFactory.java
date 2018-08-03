@@ -2,9 +2,6 @@ package za.ac.cput.dogpounddomain.TestFactories;
 
 import org.junit.Assert;
 import org.junit.Test;
-import za.ac.cput.dogpounddomain.Domain.Schedule;
-import za.ac.cput.dogpounddomain.Domain.ScheduleType;
-import za.ac.cput.dogpounddomain.Factories.ScheduleTypeFactory;
 
 import java.util.List;
 

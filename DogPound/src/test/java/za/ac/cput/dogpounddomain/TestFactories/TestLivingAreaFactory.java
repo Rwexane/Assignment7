@@ -3,8 +3,6 @@ package za.ac.cput.dogpounddomain.TestFactories;
 import org.junit.Assert;
 import org.junit.Test;
 import za.ac.cput.dogpounddomain.Domain.Dog;
-import za.ac.cput.dogpounddomain.Domain.LivingArea;
-import za.ac.cput.dogpounddomain.Factories.LivingAreaFactory;
 
 import java.util.List;
 

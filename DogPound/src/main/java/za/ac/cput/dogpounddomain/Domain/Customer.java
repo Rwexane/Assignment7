@@ -1,113 +1,108 @@
 package za.ac.cput.dogpounddomain.Domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.HashMap;
 
+@Entity
 public class Customer implements Serializable {
-    private HashMap<String, String> Id;
-    private String custNumber;
-    private String custName;
-    private String custSurname;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+    private String name;
+    private String surname;
+    private String phoneNumber;
 
 
-    private Adoption adopt;
+    public Customer()
+    {
 
-    private Address Adress;
-
-
-    private Customer() {
     }
-
 
     private Customer(Builder build)
     {
-        Id = build.Id;
-        adopt = build.adopt;
-        custName = build.custName;
-        custSurname = build.custSurname;
-        custNumber = build.custNumber;
-        Adress = build.adress;
+        this.name = build.name;
+        this.surname = build.surname;
+        this.phoneNumber = build.phoneNumber;
+        this.id = build.id;
+
 
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
     public static class Builder{
+        private long id;
+        private String name;
+        private String surname;
+        private String phoneNumber;
 
-        private HashMap<String, String> Id;
-        private String custName;
-        private String custNumber;
-        private String custSurname;
-        private Adoption adopt;
-        private Address adress;
-
-        public Builder() {
-            this.custNumber = custNumber;
-        }
-
-        public Builder Adress (Address addr){
-            this.adress = addr;
-            return this;
-        }
-        public Builder Id(HashMap<String, String> id) {
-            this.Id = id;
+        public Builder id(long id){
+            this.id = id;
             return this;
         }
 
-        public Builder CustName(String custName) {
-            this.custName = custName;
+        public Builder name(String name){
+            this.name = name;
             return this;
         }
 
-        public Builder CustSurname(String custSurname) {
-            this.custSurname = custSurname;
-            return this;
-        }
-        public Builder Adopt(Adoption adopt) {
-            this.adopt = adopt;
+        public Builder surname(String surname){
+            this.surname = surname;
             return this;
         }
 
-        public Builder customer(Customer cust)
-        {
-            adopt = cust.getAdopt();
-            custName = cust.getCustName();
-            custNumber = cust.getCustNumber();
-            custSurname = cust.getCustSurname();
-            Id = cust.getID();
-            adress = cust.getAdress();
+        public Builder phoneNumber(String phoneNumber){
+            this.phoneNumber = phoneNumber;
             return this;
         }
 
-        public Customer build()
-        {
+        public Builder customer(Customer cust) {
+            name = cust.getName();
+            surname = cust.getSurname();
+            phoneNumber = cust.getPhoneNumber();
+            id = cust.getId();
+            return this;
+        }
+
+        public Builder copy(Customer value){
+            name = value.name;
+            surname = value.surname;
+            phoneNumber = value.phoneNumber;
+            id = value.id;
+            return this;
+        }
+
+        public Customer build(){
             return new Customer(this);
         }
     }
 
-    public Address getAdress()
+
+    /*
+    @Override
+    public String toString()
     {
-        return Adress;
-    }
-    public HashMap<String, String> getID()
-    {
-        return Id;
-    }
-    public String getCustName() {
-        return custName;
+        return String.format("Id : %d\nName :%s\nSurname :%s\nAge :%s",id,name,surname,age);
+
     }
 
-    public String getCustNumber() {
-        return custNumber;
-    }
-
-    public String getCustSurname() {
-        return custSurname;
-    }
-
-
-    public Adoption getAdopt() {
-        return adopt;
-    }
-
+    */
 }
-

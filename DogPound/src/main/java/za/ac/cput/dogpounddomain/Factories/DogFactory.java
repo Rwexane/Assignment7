@@ -1,32 +1,16 @@
 package za.ac.cput.dogpounddomain.Factories;
 
 import za.ac.cput.dogpounddomain.Domain.Dog;
-import za.ac.cput.dogpounddomain.Domain.Schedule;
 
-import java.util.List;
-
-public class DogFactory {
-
-    //singleton
-    private static DogFactory instance=null;
-
-    public DogFactory(){}
-
-    public static DogFactory getInstance(){
-        if (instance == null) {
-            instance = new DogFactory();
-        }
-        return instance;
-    }
+public class DogFactory{
     public static Dog createDog(String name,
-                                int dogId,
-                                List<Schedule> schedules,
-                                String breed)
+                                String breed,
+                                String livingArea)
     {
-        return new Dog.Builder(name)
-                .dogId(dogId)
+        return new Dog.Builder()
+                .name(name)
                 .breed(breed)
-                .schedules(schedules)
+                .livingArea(livingArea)
                 .build();
     }
 }

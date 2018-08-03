@@ -1,7 +1,9 @@
 package za.ac.cput.dogpounddomain.Repository.customer;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.dogpounddomain.Domain.Adoption;
-import za.ac.cput.dogpounddomain.Repository.Repository;
 
-public interface AdoptionRepository extends Repository<Adoption,Long> {
+@Repository
+public interface AdoptionRepository extends CrudRepository<Adoption, Long> {
 }

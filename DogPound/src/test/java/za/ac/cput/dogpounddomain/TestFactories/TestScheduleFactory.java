@@ -2,9 +2,6 @@ package za.ac.cput.dogpounddomain.TestFactories;
 
 import org.junit.Assert;
 import org.junit.Test;
-import za.ac.cput.dogpounddomain.Domain.DateTimeRange;
-import za.ac.cput.dogpounddomain.Domain.Schedule;
-import za.ac.cput.dogpounddomain.Factories.ScheduleFactory;
 
 public class TestScheduleFactory {
 

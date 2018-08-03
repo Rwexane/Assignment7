@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import za.ac.cput.dogpounddomain.Domain.Adoption;
 import za.ac.cput.dogpounddomain.Domain.Dog;
-import za.ac.cput.dogpounddomain.Domain.Schedule;
 import za.ac.cput.dogpounddomain.Factories.DogFactory;
 
 import java.util.List;

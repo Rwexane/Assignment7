@@ -1,83 +1,104 @@
 package za.ac.cput.dogpounddomain.Domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
 
+@Entity
 public class Dog implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String breed;
-    private int dogId;
-    private double weight;
-    private List<Schedule> schedules;
+    private String livingArea;
+    private String name;
 
-    public Dog(Builder value)
-    {
-        this.breed = value.breed;
-        this.dogId = value.dogId;
-        this.weight = value.weight;
+
+    public Dog() {
+
     }
 
-    public String getbreed() {
-        return breed;
+    private Dog(Builder build) {
+        this.breed = build.breed;
+        this.livingArea = build.livingArea;
+        this.name = build.name;
+        this.id = build.id;
     }
 
-    public int getDogId() {
-        return dogId;
-    }
-
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public List<Schedule> getSchedules() {
-        return schedules;
+    public long getId() {
+        return id;
     }
 
     public String getBreed() {
         return breed;
     }
 
-    public static class Builder{
-        String breed;
-        int dogId;
-        double weight;
-        List<Schedule> schedules;
+    public String getlivingArea() {
+        return livingArea;
+    }
 
-        public Builder(String breed) {
-            this.breed = breed;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public Builder dogId(int dogId) {
-            this.dogId = dogId;
+    public static class Builder {
+        private long id;
+        private String breed;
+        private String livingArea;
+        private String name;
+
+        public Builder id(long id) {
+            this.id = id;
             return this;
         }
 
-        public Builder weight(double weight) {
-            this.weight = weight;
+        public Builder name(String name) {
+            this.name = name;
             return this;
         }
+
+        public Builder livingArea(String livingArea) {
+            this.livingArea = livingArea;
+            return this;
+        }
+
         public Builder breed(String breed) {
             this.breed = breed;
             return this;
         }
 
-        public Builder schedules(List<Schedule> schedules) {
-            this.schedules = schedules;
+        public Builder dog(Dog dog) {
+            name = dog.getName();
+            breed = dog.getBreed();
+            livingArea = dog.getlivingArea();
+            id = dog.getId();
             return this;
         }
 
-        public Builder copy(Dog value)
-        {
-            this.breed = value.breed;
-            this.dogId = value.dogId;
-            this.weight = value.weight;
+        public Builder copy(Dog value) {
+            name = value.name;
+            breed = value.breed;
+            livingArea = value.livingArea;
+            id = value.id;
             return this;
         }
 
-        public Dog build()
-        {
+        public Dog build() {
             return new Dog(this);
         }
+    }
+
+
+    /*
+    @Override
+    public String toString()
+    {
+        return String.format("Id : %d\nName :%s\nSurname :%s\nAge :%s",id,name,surname,age);
 
     }
+
+    */
 }
