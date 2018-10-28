@@ -6,4 +6,5 @@ import za.ac.cput.dogpounddomain.Domain.Adoption;
 
 @Repository
 public interface AdoptionRepository extends CrudRepository<Adoption, Long> {
+    Adoption findOne(Long id);
 }

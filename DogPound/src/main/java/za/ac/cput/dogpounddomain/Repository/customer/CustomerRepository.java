@@ -8,4 +8,5 @@ import za.ac.cput.dogpounddomain.Domain.Customer;
 public interface CustomerRepository  extends CrudRepository<Customer, Long> {
 
 
+    Customer findOne(Long id);
 }

@@ -6,4 +6,5 @@ import za.ac.cput.dogpounddomain.Domain.Dog;
 
 @Repository
 public interface DogRepository  extends CrudRepository<Dog, Long> {
+    Dog findOne(Long id);
 }
